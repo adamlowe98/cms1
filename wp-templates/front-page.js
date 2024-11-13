@@ -1,5 +1,3 @@
-# Fix this headless app front page
-
 import { gql } from "@apollo/client";
 import Head from "next/head";
 import Link from "next/link";
@@ -15,29 +13,54 @@ export default function Component(props) {
 
   return (
     <>
-      <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Headless CMS for Students</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <nav class="sidebar">
-            <h2>Navigation</h2>
-            <ul>
-                <li><a href="students.html">Students</a></li>
-                <li><a href="courses.html">Courses</a></li>
-                <li><a href="grades.html">Grades</a></li>
-                <li><a href="attendance.html">Attendance</a></li>
-            </ul>
-        </nav>
-        <main class="content">
-            <h1>Welcome to the Headless CMS</h1>
-            <p>Select a feature from the navigation menu.</p>
-        </main>
-    </div>
-</body>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
+
+      <Header
+        siteTitle={siteTitle}
+        siteDescription={siteDescription}
+        menuItems={menuItems}
+      />
+
+      <main className="container">
+        <EntryHeader title="Welcome to the Student Management System" />
+
+        <section className={style.cardGrid}>
+          <Link
+            href="/students"
+            className={style.card}
+          >
+            <h3>Students →</h3>
+            <p>Manage student profiles, enrollment, and information.</p>
+          </Link>
+
+          <Link
+            href="/courses"
+            className={style.card}
+          >
+            <h3>Courses →</h3>
+            <p>View and manage available courses and their details.</p>
+          </Link>
+
+          <Link
+            href="/grades"
+            className={style.card}
+          >
+            <h3>Grades →</h3>
+            <p>Track and manage student grades and assessments.</p>
+          </Link>
+
+          <Link
+            href="/attendance"
+            className={style.card}
+          >
+            <h3>Attendance →</h3>
+            <p>Monitor and manage student attendance records.</p>
+          </Link>
+        </section>
+      </main>
+
       <Footer />
     </>
   );
