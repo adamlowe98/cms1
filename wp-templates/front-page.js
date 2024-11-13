@@ -1,54 +1,88 @@
-class ContentManagementSystem {
-    constructor() {
-        this.contents = [];
-    }
+import { gql } from "@apollo/client";
+import Head from "next/head";
+import Link from "next/link";
+import Header from "../components/header";
+import EntryHeader from "../components/entry-header";
+import Footer from "../components/footer";
+import style from "../styles/front-page.module.css";
 
-    addContent(title, body) {
-        const content = {
-            id: this.contents.length + 1,
-            title: title,
-            body: body,
-            createdAt: new Date()
-        };
-        this.contents.push(content);
-        return content;
-    }
+export default function Component(props) {
+  const { title: siteTitle, description: siteDescription } =
+    props.data.generalSettings;
+  const menuItems = props.data.primaryMenuItems.nodes;
 
-    getContent(id) {
-        return this.contents.find(content => content.id === id);
-    }
+  return (
+    <>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
 
-    updateContent(id, newTitle, newBody) {
-        const content = this.getContent(id);
-        if (content) {
-            content.title = newTitle;
-            content.body = newBody;
-            return content;
-        }
-        return null;
-    }
+      <Header
+        siteTitle={siteTitle}
+        siteDescription={siteDescription}
+        menuItems={menuItems}
+      />
 
-    deleteContent(id) {
-        const index = this.contents.findIndex(content => content.id === id);
-        if (index !== -1) {
-            return this.contents.splice(index, 1)[0];
-        }
-        return null;
-    }
+      <main className="container">
+        <EntryHeader title="Welcome to the Faust Scaffold Blueprint" />
 
-    listContents() {
-        return this.contents;
-    }
+        <section className={style.cardGrid}>
+          <Link
+            href="https://faustjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={style.card}
+          >
+            <h3>Documentation →</h3>
+            <p>
+              Learn more about Faust.js through guides and reference
+              documentation.
+            </p>
+          </Link>
+
+          <Link
+            href="https://my.wpengine.com/atlas#/create/blueprint"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={style.card}
+          >
+            <h3>Blueprints →</h3>
+            <p>Explore production ready Faust.js starter projects.</p>
+          </Link>
+
+          <Link
+            href="https://wpengine.com/atlas"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={style.card}
+          >
+            <h3>Deploy →</h3>
+            <p>
+              Deploy your Faust.js app to Headless Platform along with your WordPress
+              instance.
+            </p>
+          </Link>
+
+          <Link
+            href="https://github.com/wpengine/faustjs"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={style.card}
+          >
+            <h3>Contribute →</h3>
+            <p>Visit us on GitHub to explore how you can contribute!</p>
+          </Link>
+        </section>
+      </main>
+
+      <Footer />
+    </>
+  );
 }
 
-// Example usage
-const cms = new ContentManagementSystem();
-cms.addContent("First Post", "This is the body of the first post.");
-cms.addContent("Second Post", "This is the body of the second post.");
-console.log(cms.listContents());
-const content = cms.getContent(1);
-console.log(content);
-cms.updateContent(1, "Updated First Post", "Updated body of the first post.");
-console.log(cms.getContent(1));
-cms.deleteContent(2);
-console.log(cms.listContents());
+Component.query = gql`
+  ${Header.fragments.entry}
+  query GetHomePage {
+    ...HeaderFragment
+  }
+`;
