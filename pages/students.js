@@ -1,11 +1,14 @@
 import { gql } from "@apollo/client";
 import Head from "next/head";
+import Link from "next/link";
 import Header from "../components/header";
+import EntryHeader from "../components/entry-header";
 import Footer from "../components/footer";
-import style from "../styles/students.module.css";
+import style from "../styles/front-page.module.css";
 
 export default function Students(props) {
-  const { title: siteTitle } = props.data.generalSettings;
+  const { title: siteTitle, description: siteDescription } = props.data.generalSettings;
+  const menuItems = props.data.primaryMenuItems.nodes;
 
   return (
     <>
@@ -13,12 +16,16 @@ export default function Students(props) {
         <title>{siteTitle} - Students</title>
       </Head>
 
-      <Header siteTitle={siteTitle} />
+      <Header siteTitle={siteTitle} siteDescription={siteDescription} menuItems={menuItems} />
 
       <main className="container">
-        <h1>Students Management</h1>
-        <p>Here you can manage student records, add new students, and edit existing ones.</p>
-        {/* Add student management functionalities here */}
+        <EntryHeader title="Student Management" />
+
+        <section className={style.cardGrid}>
+          <h3>Manage Students</h3>
+          <p>Here you can add, edit, and delete student records.</p>
+          {/* Additional student management features */}
+        </section>
       </main>
 
       <Footer />
@@ -27,9 +34,8 @@ export default function Students(props) {
 }
 
 Students.query = gql`
+  ${Header.fragments.entry}
   query GetStudentsPage {
-    generalSettings {
-      title
-    }
+    ...HeaderFragment
   }
 `;
