@@ -6,7 +6,7 @@ import EntryHeader from "../components/entry-header";
 import Footer from "../components/footer";
 import style from "../styles/front-page.module.css";
 
-export default function Component(props) {
+export default function Home(props) {
   const { title: siteTitle, description: siteDescription } =
     props.data.generalSettings;
   const menuItems = props.data.primaryMenuItems.nodes;
@@ -24,39 +24,36 @@ export default function Component(props) {
       />
 
       <main className="container">
-        <EntryHeader title="Welcome to the Student Management System" />
+        <EntryHeader title="Student Management System" />
+
+        <nav className={style.verticalMenu}>
+          <ul>
+            <li><Link href="/students">Students</Link></li>
+            <li><Link href="/courses">Courses</Link></li>
+            <li><Link href="/grades">Grades</Link></li>
+            <li><Link href="/attendance">Attendance</Link></li>
+          </ul>
+        </nav>
 
         <section className={style.cardGrid}>
-          <Link
-            href="school/students.html"
-            className={style.card}
-          >
-            <h3>Students →</h3>
-            <p>Manage student profiles, enrollment, and information.</p>
+          <Link href="/students" className={style.card}>
+            <h3>Manage Students →</h3>
+            <p>Access and manage student information.</p>
           </Link>
 
-          <Link
-            href="school/courses.html"
-            className={style.card}
-          >
-            <h3>Courses →</h3>
-            <p>View and manage available courses and their details.</p>
+          <Link href="/courses" className={style.card}>
+            <h3>Manage Courses →</h3>
+            <p>View and edit course details.</p>
           </Link>
 
-          <Link
-            href="school/grades.html"
-            className={style.card}
-          >
-            <h3>Grades →</h3>
-            <p>Track and manage student grades and assessments.</p>
+          <Link href="/grades" className={style.card}>
+            <h3>Manage Grades →</h3>
+            <p>Track and update student grades.</p>
           </Link>
 
-          <Link
-            href="school/attendance.html"
-            className={style.card}
-          >
-            <h3>Attendance →</h3>
-            <p>Monitor and manage student attendance records.</p>
+          <Link href="/attendance" className={style.card}>
+            <h3>Manage Attendance →</h3>
+            <p>Record and monitor student attendance.</p>
           </Link>
         </section>
       </main>
@@ -66,7 +63,7 @@ export default function Component(props) {
   );
 }
 
-Component.query = gql`
+Home.query = gql`
   ${Header.fragments.entry}
   query GetHomePage {
     ...HeaderFragment
