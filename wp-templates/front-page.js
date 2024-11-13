@@ -26,10 +26,10 @@ export default function Component(props) {
         <nav class="sidebar">
             <h2>Navigation</h2>
             <ul>
-                <li><a href="students.html">Students</a></li>
-                <li><a href="courses.html">Courses</a></li>
-                <li><a href="grades.html">Grades</a></li>
-                <li><a href="attendance.html">Attendance</a></li>
+                <li><a href="students.js">Students</a></li>
+                <li><a href="courses.js">Courses</a></li>
+                <li><a href="grades.js">Grades</a></li>
+                <li><a href="attendance.js">Attendance</a></li>
             </ul>
         </nav>
         <main class="content">
