@@ -36,22 +36,22 @@ export default function Home(props) {
         </nav>
 
         <section className={style.cardGrid}>
-          <Link href="pages/students" className={style.card}>
+          <Link href="/students" className={style.card}>
             <h3>Manage Students →</h3>
             <p>Access and manage student information.</p>
           </Link>
 
-          <Link href="pages/courses" className={style.card}>
+          <Link href="/courses" className={style.card}>
             <h3>Manage Courses →</h3>
             <p>View and edit course details.</p>
           </Link>
 
-          <Link href="pages/grades" className={style.card}>
+          <Link href="/grades" className={style.card}>
             <h3>Manage Grades →</h3>
             <p>Track and update student grades.</p>
           </Link>
 
-          <Link href="pages/attendance" className={style.card}>
+          <Link href="/attendance" className={style.card}>
             <h3>Manage Attendance →</h3>
             <p>Record and monitor student attendance.</p>
           </Link>
