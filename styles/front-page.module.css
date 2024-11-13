@@ -1,33 +1,41 @@
-/* styles.css */
 .container {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
-.sidebar {
-    width: 200px;
-    background-color: #f4f4f4;
-    padding: 15px;
+.verticalMenu {
+  width: 200px;
+  float: left;
 }
 
-.sidebar h2 {
-    margin-top: 0;
+.verticalMenu ul {
+  list-style-type: none;
+  padding: 0;
 }
 
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
+.verticalMenu li {
+  margin: 10px 0;
 }
 
-.sidebar ul li {
-    margin: 10px 0;
+.cardGrid {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.sidebar ul li a {
-    text-decoration: none;
-    color: #333;
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  flex: 1 1 200px;
 }
 
-.content {
-    flex: 1;
-    padding: 20px;
+.card h3 {
+  margin: 0;
+}
+
+.card p {
+  margin: 10px 0 0;
 }
