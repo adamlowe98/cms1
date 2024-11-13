@@ -28,7 +28,7 @@ export default function Component(props) {
 
         <section className={style.cardGrid}>
           <Link
-            href="/students"
+            href="school/students"
             className={style.card}
           >
             <h3>Students →</h3>
@@ -36,7 +36,7 @@ export default function Component(props) {
           </Link>
 
           <Link
-            href="/courses"
+            href="school/courses"
             className={style.card}
           >
             <h3>Courses →</h3>
@@ -44,7 +44,7 @@ export default function Component(props) {
           </Link>
 
           <Link
-            href="/grades"
+            href="school/grades"
             className={style.card}
           >
             <h3>Grades →</h3>
@@ -52,7 +52,7 @@ export default function Component(props) {
           </Link>
 
           <Link
-            href="/attendance"
+            href="school/attendance"
             className={style.card}
           >
             <h3>Attendance →</h3>
