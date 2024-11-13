@@ -32,3 +32,10 @@ export default function Attendance(props) {
     </>
   );
 }
+
+Attendance.query = gql`
+  ${Header.fragments.entry}
+  query GetAttendancePage {
+    ...HeaderFragment
+  }
+`;
