@@ -1,69 +1,39 @@
-/* styles/front-page.module.css */
-
-.container {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.layout {
-  display: flex;
+.container {
+    display: flex;
 }
 
 .sidebar {
-  width: 200px;
-  background-color: #f4f4f4;
-  padding: 15px;
-  border-right: 1px solid #ccc;
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 15px;
+}
+
+.sidebar h2 {
+    margin-top: 0;
 }
 
 .sidebar ul {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 
-.sidebar li {
-  margin: 10px 0;
+.sidebar ul li {
+    margin: 10px 0;
 }
 
-.sidebar a {
-  text-decoration: none;
-  color: #333;
-}
-
-.sidebar a:hover {
-  color: #0070f3;
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
 }
 
 .content {
-  flex: 1;
-  padding: 20px;
-}
-
-h2 {
-  color: #333;
-}
-
-form {
-  margin-bottom: 20px;
-}
-
-input, select, button {
-  display: block;
-  margin: 10px 0;
-  padding: 10px;
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  background-color: #0070f3;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #005bb5;
+    flex: 1;
+    padding: 20px;
 }
