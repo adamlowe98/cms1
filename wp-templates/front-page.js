@@ -16,42 +16,66 @@ export default function Component(props) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <div className={style.container}>
-        <Header />
-        <nav className={style.sideNav}>
-          <ul>
-            <li><Link href="/students">Students</Link></li>
-            <li><Link href="/grades">Grades</Link></li>
-            <li><Link href="/courses">Courses</Link></li>
-            <li><Link href="/reports">Reports</Link></li>
-            <li><Link href="/settings">Settings</Link></li>
-          </ul>
-        </nav>
-        <main className={style.mainContent}>
-          <EntryHeader title="Student Information Management" />
-          <section>
-            <h2>Manage Students</h2>
-            <p>Add, edit, or remove student information.</p>
-            {/* Student management functionality goes here */}
-          </section>
-          <section>
-            <h2>Manage Grades</h2>
-            <p>Input and track student grades.</p>
-            {/* Grade management functionality goes here */}
-          </section>
-          <section>
-            <h2>Manage Courses</h2>
-            <p>Overview of courses offered.</p>
-            {/* Course management functionality goes here */}
-          </section>
-          <section>
-            <h2>Generate Reports</h2>
-            <p>Generate performance reports for students.</p>
-            {/* Report generation functionality goes here */}
-          </section>
-        </main>
-        <Footer />
-      </div>
+      <Header
+        siteTitle={siteTitle}
+        siteDescription={siteDescription}
+        menuItems={menuItems}
+      />
+      <main className="container">
+        <EntryHeader title="Welcome to the Faust Scaffold Blueprint" />
+        <section className={style.cardGrid}>
+          <Link
+            href="https://faustjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={style.card}
+          >
+            <h3>Documentation →</h3>
+            <p>
+              Learn more about Faust.js through guides and reference
+              documentation.
+            </p>
+          </Link>
+          <Link
+            href="https://my.wpengine.com/atlas#/create/blueprint"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={style.card}
+          >
+            <h3>Blueprints →</h3>
+            <p>Explore production ready Faust.js starter projects.</p>
+          </Link>
+          <Link
+            href="https://wpengine.com/atlas"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={style.card}
+          >
+            <h3>Deploy →</h3>
+            <p>
+              Deploy your Faust.js app to Headless Platform along with your WordPress
+              instance.
+            </p>
+          </Link>
+          <Link
+            href="https://github.com/wpengine/faustjs"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={style.card}
+          >
+            <h3>Contribute →</h3>
+            <p>Visit us on GitHub to explore how you can contribute!</p>
+          </Link>
+        </section>
+      </main>
+      <Footer />
     </>
   );
 }
+
+Component.query = gql`
+  ${Header.fragments.entry}
+  query GetHomePage {
+    ...HeaderFragment
+  }
+`;
