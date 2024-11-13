@@ -32,8 +32,6 @@ export default function Component(props) {
               <li><Link href="/reports">Reports</Link></li>
               <li><Link href="/attendance">Attendance</Link></li>
               <li><Link href="/settings">Settings</Link></li>
-              <li><Link href="/notifications">Notifications</Link></li>
-              <li><Link href="/user-management">User Management</Link></li>
             </ul>
           </nav>
           <section className={style.content}>
@@ -76,27 +74,6 @@ export default function Component(props) {
             <h2>Reports</h2>
             <p>Generate reports for student performance and attendance.</p>
             <button>Generate Report</button>
-            <h2>Notifications</h2>
-            <p>Manage notifications for students and staff.</p>
-            <h3>Add Notification</h3>
-            <form>
-              <input type="text" placeholder="Notification Title" required />
-              <textarea placeholder="Notification Message" required></textarea>
-              <button type="submit">Send Notification</button>
-            </form>
-            <h2>User Management</h2>
-            <p>Manage user accounts and permissions.</p>
-            <h3>Add New User</h3>
-            <form>
-              <input type="text" placeholder="User Name" required />
-              <input type="email" placeholder="User Email" required />
-              <select>
-                <option value="admin">Admin</option>
-                <option value="teacher">Teacher</option>
-                <option value="student">Student</option>
-              </select>
-              <button type="submit">Add User</button>
-            </form>
           </section>
         </div>
       </main>
