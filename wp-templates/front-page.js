@@ -1,3 +1,5 @@
+# Fix this headless app front page
+
 import { gql } from "@apollo/client";
 import Head from "next/head";
 import Link from "next/link";
