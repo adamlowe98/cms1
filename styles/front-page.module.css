@@ -1,34 +1,64 @@
-.cardGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
-.card {
-  padding: 1.5rem;
-  border: 1px solid #e1e1e1;
-  border-radius: 0.5rem;
-  line-height: 1.5;
+.layout {
+  display: flex;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .card {
-    transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  }
+.sidebar {
+  width: 200px;
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-right: 1px solid #ccc;
 }
 
-.card:hover {
-  border-color: royalblue;
-  color: royalblue;
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
 }
 
-.card h3 {
-  font-size: 1.75rem;
-  margin: 0;
-  margin-bottom: 0.5rem;
+.sidebar li {
+  margin: 10px 0;
 }
 
-.card p {
-  font-size: 1.25rem;
-  margin: 0;
+.sidebar a {
+  text-decoration: none;
+  color: #333;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+h2 {
+  color: #2c3e50;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
 }
