@@ -1,14 +1,19 @@
-import { gql } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import Head from "next/head";
-import Link from "next/link";
 import Header from "../components/header";
 import EntryHeader from "../components/entry-header";
 import Footer from "../components/footer";
-import style from "../styles/front-page.module.css";
+import { getNextStaticProps } from "@faustwp/core";
 
-export default function Students(props) {
-  const { title: siteTitle, description: siteDescription } = props.data.generalSettings;
-  const menuItems = props.data.primaryMenuItems.nodes;
+/**
+ * Next.js file based page example with Faust helpers.
+ */
+export default function Students() {
+  const { data } = useQuery(Students.query);
+
+  const { title: siteTitle, description: siteDescription } =
+    data.generalSettings;
+  const menuItems = data.primaryMenuItems.nodes;
 
   return (
     <>
@@ -16,12 +21,15 @@ export default function Students(props) {
         <title>{siteTitle} - Students</title>
       </Head>
 
-      <Header siteTitle={siteTitle} siteDescription={siteDescription} menuItems={menuItems} />
+      <Header
+        siteTitle={siteTitle}
+        siteDescription={siteDescription}
+        menuItems={menuItems}
+      />
 
       <main className="container">
         <EntryHeader title="Student Management" />
-
-        <section className={style.cardGrid}>
+        <section>
           <h3>Manage Students</h3>
           <p>Here you can add, edit, and delete student records.</p>
           {/* Additional student management features */}
@@ -39,3 +47,9 @@ Students.query = gql`
     ...HeaderFragment
   }
 `;
+
+export function getStaticProps(ctx) {
+  return getNextStaticProps(ctx, {
+    Page: Students,
+  });
+}
