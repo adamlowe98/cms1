@@ -1,4 +1,5 @@
 /* styles/front-page.module.css */
+
 .container {
   display: flex;
   flex-direction: column;
@@ -30,36 +31,39 @@
   color: #333;
 }
 
+.sidebar a:hover {
+  color: #0070f3;
+}
+
 .content {
   flex: 1;
   padding: 20px;
 }
 
 h2 {
-  color: #2c3e50;
+  color: #333;
 }
 
 form {
   margin-bottom: 20px;
 }
 
-input, textarea, select {
-  width: 100%;
+input, select, button {
+  display: block;
+  margin: 10px 0;
   padding: 10px;
-  margin: 5px 0;
+  width: 100%;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 button {
-  background-color: #3498db;
+  background-color: #0070f3;
   color: white;
-  padding: 10px;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #2980b9;
+  background-color: #005bb5;
 }
