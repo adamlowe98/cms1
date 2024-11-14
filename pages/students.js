@@ -5,7 +5,7 @@ import EntryHeader from "../components/entry-header";
 import Footer from "../components/footer";
 import { getNextStaticProps } from "@faustwp/core";
 import style from "../styles/front-page.module.css";
-
+import Link from "next/link";
 
 /**
  * Next.js file based page example with Faust helpers.
