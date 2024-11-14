@@ -24,15 +24,16 @@ export default function Attendance() {
 
       <Header menuItems={menuItems} />
 
-      <nav className={style.verticalMenu}>
-        <ul>
-          <li><Link href="/students">Students</Link></li>
-          <li><Link href="/courses">Courses</Link></li>
-          <li><Link href="/grades">Grades</Link></li>
-          <li><Link href="/attendance">Attendance</Link></li>
-        </ul>
-      </nav>
-
+     <nav class="horizontalMenu">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/students">Students</a></li>
+        <li><a href="/courses">Courses</a></li>
+        <li><a href="/grades">Grades</a></li>
+        <li><a href="/attendance">Attendance</a></li>
+    </ul>
+</nav>
+    
       <main className="container">
         <EntryHeader title="Attendance Management" />
         <section className={style.cardGrid}>
