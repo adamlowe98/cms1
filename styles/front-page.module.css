@@ -146,3 +146,42 @@
 .studentForm button:hover {
   background-color: #45a049;
 }
+
+/* CSS for the table and layout */
+.container {
+  display: flex;
+}
+
+.formSection {
+  flex: 1;
+  padding: 20px;
+}
+
+.tableSection {
+  flex: 1;
+  padding: 20px;
+}
+
+.studentTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.studentTable th, .studentTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.studentTable th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.studentTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.studentTable tr:hover {
+  background-color: #ddd;
+}
+
