@@ -12,6 +12,8 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    display: flex;
+  justify-content: space-between;
 }
 
 /* Header Styles */
@@ -147,19 +149,14 @@
   background-color: #45a049;
 }
 
-/* CSS for the table and layout */
-.container {
-  display: flex;
-}
+/* front-page.module.css */
 
 .formSection {
-  flex: 1;
-  padding: 20px;
+  width: 45%;
 }
 
 .tableSection {
-  flex: 1;
-  padding: 20px;
+  width: 45%;
 }
 
 .studentTable {
@@ -177,11 +174,4 @@
   text-align: left;
 }
 
-.studentTable tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.studentTable tr:hover {
-  background-color: #ddd;
-}
 
