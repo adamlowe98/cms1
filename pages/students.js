@@ -1,4 +1,4 @@
-import { gql, useQuery, useMutation } from "@apollo/client";
+import { gql, useQuery, useMutation } from "your-graphql-client"; // Replace with your GraphQL client
 import Head from "next/head";
 import Header from "../components/header";
 import EntryHeader from "../components/entry-header";
@@ -7,9 +7,6 @@ import { getNextStaticProps } from "@faustwp/core";
 import style from "../styles/front-page.module.css";
 import Link from "next/link";
 import { useState } from "react";
-import { initializeApollo } from "../apollo-client"; // Updated import for Apollo Client
-
-const client = initializeApollo(); // Initialize Apollo Client
 
 export default function Students({ menuItems }) {
   const { data } = useQuery(GetStudentsPage);
@@ -130,7 +127,7 @@ const GetStudentsPage = gql`
 `;
 
 export async function getStaticProps(ctx) {
-  const { data } = await client.query({ query: GetStudentsPage });
+  const { data } = await yourGraphQLClient.query({ query: GetStudentsPage }); // Replace with your GraphQL client
   return getNextStaticProps(ctx, {
     Page: Students,
     props: {
