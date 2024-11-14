@@ -36,6 +36,7 @@ export default function Courses() {
             <li><Link href="/courses">Courses</Link></li>
             <li><Link href="/grades">Grades</Link></li>
             <li><Link href="/attendance">Attendance</Link></li>
+    <li><Link href="/glenn-mannion">Glenn Mannion</Link></li>
           </ul>
         </nav>
     
