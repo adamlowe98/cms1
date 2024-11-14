@@ -29,34 +29,31 @@
 
 /* Navigation Styles */
 
-.horizontalMenu {
-  display: flex;
-  justify-content: center;
+.fancyMenu {
   background-color: #333;
+  padding: 10px;
 }
 
-.horizontalMenu ul {
+.fancyMenu ul {
   list-style-type: none;
-  padding: 0;
-  margin: 0;
   display: flex;
+  justify-content: space-around;
 }
 
-.horizontalMenu li {
-  margin: 0 15px;
+.fancyMenu li {
+  position: relative;
 }
 
-.horizontalMenu a {
+.fancyMenu a {
   color: white;
   text-decoration: none;
   padding: 10px 15px;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-.horizontalMenu a:hover {
+.fancyMenu a:hover {
   background-color: #555;
-  color: #fff;
-  border-radius: 5px;
+  transform: scale(1.1);
 }
 
 
