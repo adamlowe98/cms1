@@ -23,8 +23,11 @@ export default function Attendance() {
       </Head>
 
       <Header menuItems={menuItems} />
+    
+      <main className="container">
+        <EntryHeader title="Attendance Management" />
 
-  <nav className={style.fancyMenu}>
+    <nav className={style.fancyMenu}>
           <ul>
             <li><Link href="/">Home</Link></li>
             <li><Link href="/students">Students</Link></li>
@@ -34,8 +37,6 @@ export default function Attendance() {
           </ul>
         </nav>
     
-      <main className="container">
-        <EntryHeader title="Attendance Management" />
         <section className={style.cardGrid}>
           <h3>Manage Attendance</h3>
           <p>Here you can track and manage student attendance.</p>
