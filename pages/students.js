@@ -7,7 +7,9 @@ import { getNextStaticProps } from "@faustwp/core";
 import style from "../styles/front-page.module.css";
 import Link from "next/link";
 import { useState } from "react";
-import client from "../apollo-client"; // Ensure client is imported
+import { initializeApollo } from "../apollo-client"; // Updated import for Apollo Client
+
+const client = initializeApollo(); // Initialize Apollo Client
 
 export default function Students({ menuItems }) {
   const { data } = useQuery(GetStudentsPage);
