@@ -34,13 +34,12 @@ export default function Students() {
     // Reset form or handle success
   };
 
-  const { title: siteTitle, description: siteDescription } = data.generalSettings;
   const menuItems = data.primaryMenuItems.nodes;
 
   return (
     <>
       <Head>
-        <title>{siteTitle} - Students</title>
+        <title>Students Management</title>
       </Head>
 
       <Header menuItems={menuItems} />
@@ -119,6 +118,12 @@ const GetStudentsPage = gql`
       email
       phone
       grade
+    }
+    primaryMenuItems {
+      nodes {
+        title
+        url
+      }
     }
   }
 `;
