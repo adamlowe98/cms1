@@ -79,14 +79,18 @@ export default function Students() {
 
           <section className={style.tableSection}>
             <h3>Student List</h3>
-            <table>
+            <table className={style.studentTable}>
               <thead>
                 <tr>
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th>Email</th>
                   <th>Phone</th>
+                  <th>Address</th>
+                  <th>Date of Birth</th>
                   <th>Grade</th>
+                  <th>Parent's Name</th>
+                  <th>Parent's Contact</th>
                 </tr>
               </thead>
               <tbody>
@@ -96,7 +100,11 @@ export default function Students() {
                     <td>{student.lastName}</td>
                     <td>{student.email}</td>
                     <td>{student.phone}</td>
+                    <td>{student.address}</td>
+                    <td>{student.dateOfBirth}</td>
                     <td>{student.grade}</td>
+                    <td>{student.parentName}</td>
+                    <td>{student.parentContact}</td>
                   </tr>
                 ))}
               </tbody>
@@ -113,15 +121,19 @@ export default function Students() {
 Students.query = gql`
   ${Header.fragments.entry}
   query GetStudentsPage {
-    ...HeaderFragment
     students {
       id
       firstName
       lastName
       email
       phone
+      address
+      dateOfBirth
       grade
+      parentName
+      parentContact
     }
+    ...HeaderFragment
   }
 `;
 
@@ -142,3 +154,4 @@ const ADD_STUDENT_MUTATION = gql`
     }
   }
 `;
+
