@@ -7,6 +7,7 @@ import { getNextStaticProps } from "@faustwp/core";
 import style from "../styles/front-page.module.css";
 import Link from "next/link";
 import { useState } from "react";
+import { initializeApollo } from "../lib/apolloClient"; // Import Apollo client initialization
 
 export default function Students({ menuItems }) {
   const { data } = useQuery(GetStudentsPage);
@@ -127,6 +128,7 @@ const GetStudentsPage = gql`
 `;
 
 export async function getStaticProps(ctx) {
+  const client = initializeApollo(); // Initialize Apollo client
   const { data } = await client.query({ query: GetStudentsPage });
   return getNextStaticProps(ctx, {
     Page: Students,
