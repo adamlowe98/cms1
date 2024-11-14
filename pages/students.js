@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function Students() {
-  const { data } = useQuery(Students.query);
+  const { data } = useQuery(GetStudentsPage);
   const [addStudent] = useMutation(ADD_STUDENT_MUTATION);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -86,11 +86,7 @@ export default function Students() {
                   <th>Last Name</th>
                   <th>Email</th>
                   <th>Phone</th>
-                  <th>Address</th>
-                  <th>Date of Birth</th>
                   <th>Grade</th>
-                  <th>Parent's Name</th>
-                  <th>Parent's Contact</th>
                 </tr>
               </thead>
               <tbody>
@@ -100,11 +96,7 @@ export default function Students() {
                     <td>{student.lastName}</td>
                     <td>{student.email}</td>
                     <td>{student.phone}</td>
-                    <td>{student.address}</td>
-                    <td>{student.dateOfBirth}</td>
                     <td>{student.grade}</td>
-                    <td>{student.parentName}</td>
-                    <td>{student.parentContact}</td>
                   </tr>
                 ))}
               </tbody>
@@ -118,8 +110,7 @@ export default function Students() {
   );
 }
 
-Students.query = gql`
-  ${Header.fragments.entry}
+const GetStudentsPage = gql`
   query GetStudentsPage {
     students {
       id
@@ -127,13 +118,8 @@ Students.query = gql`
       lastName
       email
       phone
-      address
-      dateOfBirth
       grade
-      parentName
-      parentContact
     }
-    ...HeaderFragment
   }
 `;
 
@@ -154,4 +140,3 @@ const ADD_STUDENT_MUTATION = gql`
     }
   }
 `;
-
