@@ -27,6 +27,21 @@
 }
 
 /* Navigation Styles */
+
+ .verticalMenu {
+    float: left;
+    width: 200px; /* Adjust width as needed */
+  }
+  
+  .verticalMenu ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .verticalMenu li {
+    margin: 10px 0;
+  }
+
 .verticalMenu {
     background: #005f99;
     padding: 15px;
