@@ -17,8 +17,7 @@ export default function Home(props) {
         <title>{siteTitle}</title>
       </Head>
 
-           <Header menuItems={menuItems} />
-
+ <Header siteTitle={siteTitle} siteDescription={siteDescription} menuItems={menuItems} />
 
       <main className="container">
         <EntryHeader title="Student Management System" />
