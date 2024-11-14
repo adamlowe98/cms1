@@ -24,14 +24,15 @@ export default function Courses() {
 
       <Header menuItems={menuItems} />
 
-    <nav className={style.verticalMenu}>
-        <ul>
-          <li><Link href="/students">Students</Link></li>
-          <li><Link href="/courses">Courses</Link></li>
-          <li><Link href="/grades">Grades</Link></li>
-          <li><Link href="/attendance">Attendance</Link></li>
-        </ul>
-      </nav>
+   <nav className={style.fancyMenu}>
+          <ul>
+            <li><Link href="/">Home</Link></li>
+            <li><Link href="/students">Students</Link></li>
+            <li><Link href="/courses">Courses</Link></li>
+            <li><Link href="/grades">Grades</Link></li>
+            <li><Link href="/attendance">Attendance</Link></li>
+          </ul>
+        </nav>
 
       <main className="container">
         <EntryHeader title="Course Management" />
