@@ -24,6 +24,7 @@ export default function Home(props) {
 
 <nav class="horizontalMenu">
     <ul>
+        <li><a href="/">Home</a></li>
         <li><a href="/students">Students</a></li>
         <li><a href="/courses">Courses</a></li>
         <li><a href="/grades">Grades</a></li>
