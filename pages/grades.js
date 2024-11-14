@@ -22,7 +22,7 @@ export default function Grades() {
         <title>{siteTitle} - Grades</title>
       </Head>
 
-      <Header siteTitle={siteTitle} siteDescription={siteDescription} menuItems={menuItems} />
+      <Header menuItems={menuItems} />
 
   <nav className={style.verticalMenu}>
         <ul>
