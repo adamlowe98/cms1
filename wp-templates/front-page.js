@@ -6,6 +6,10 @@ import EntryHeader from "../components/entry-header";
 import Footer from "../components/footer";
 import style from "../styles/front-page.module.css";
 
+export default function Home(props) {
+  const menuItems = props.data.primaryMenuItems.nodes;
+}
+
   return (
     <>
       <Head>
