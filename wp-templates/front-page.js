@@ -17,8 +17,6 @@ export default function Home(props) {
       </Head>
 
       <Header
-        siteTitle={siteTitle}
-        siteDescription={siteDescription}
         menuItems={menuItems}
       />
 
