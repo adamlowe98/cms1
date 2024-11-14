@@ -22,15 +22,14 @@ export default function Home(props) {
       <main className="container">
         <EntryHeader title="Student Management System" />
 
-        <nav className={style.verticalMenu}>
-          <ul>
-            <li><Link href="/GetHomePage">Home</Link></li>
-            <li><Link href="/students">Students</Link></li>
-            <li><Link href="/courses">Courses</Link></li>
-            <li><Link href="/grades">Grades</Link></li>
-            <li><Link href="/attendance">Attendance</Link></li>
-          </ul>
-        </nav>
+<nav class="horizontalMenu">
+    <ul>
+        <li><a href="/students">Students</a></li>
+        <li><a href="/courses">Courses</a></li>
+        <li><a href="/grades">Grades</a></li>
+        <li><a href="/attendance">Attendance</a></li>
+    </ul>
+</nav>
 
         <section className={style.cardGrid}>
           <Link href="/students" className={style.card}>
