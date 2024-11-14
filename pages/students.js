@@ -45,7 +45,11 @@ export default function Students() {
 
       <Header menuItems={menuItems} />
 
-      <nav className={style.fancyMenu}>
+      
+      <main className="container">
+        <EntryHeader title="Student Management" />
+
+    <nav className={style.fancyMenu}>
           <ul>
             <li><Link href="/">Home</Link></li>
             <li><Link href="/students">Students</Link></li>
@@ -55,8 +59,7 @@ export default function Students() {
           </ul>
         </nav>
 
-      <main className="container">
-        <EntryHeader title="Student Management" />
+    
         <section>
           <h3>Manage Students</h3>
           <p>Here you can add, edit, and delete student records.</p>
