@@ -1,5 +1,4 @@
-import { gql, useQuery } from "@apollo/client";
-import { useState } from "react";
+import { gql, useQuery, useMutation } from "@apollo/client";
 import Head from "next/head";
 import Header from "../components/header";
 import EntryHeader from "../components/entry-header";
@@ -7,22 +6,25 @@ import Footer from "../components/footer";
 import { getNextStaticProps } from "@faustwp/core";
 import style from "../styles/front-page.module.css";
 import Link from "next/link";
+import { useState } from "react";
 
-
+/**
+ * Next.js file based page example with Faust helpers.
+ */
 export default function Students() {
   const { data } = useQuery(Students.query);
   const [studentName, setStudentName] = useState("");
-  const [studentAge, setStudentAge] = useState("");
   const [addStudent] = useMutation(ADD_STUDENT_MUTATION);
-
-  const handleAddStudent = async () => {
-    await addStudent({ variables: { name: studentName, age: studentAge } });
-    setStudentName("");
-    setStudentAge("");
-  };
 
   const { title: siteTitle, description: siteDescription } = data.generalSettings;
   const menuItems = data.primaryMenuItems.nodes;
+
+  const handleAddStudent = async () => {
+    if (studentName) {
+      await addStudent({ variables: { name: studentName } });
+      setStudentName("");
+    }
+  };
 
   return (
     <>
@@ -46,23 +48,13 @@ export default function Students() {
         <section>
           <h3>Manage Students</h3>
           <p>Here you can add, edit, and delete student records.</p>
-          <form onSubmit={(e) => { e.preventDefault(); handleAddStudent(); }}>
-            <input 
-              type="text" 
-              placeholder="Student Name" 
-              value={studentName} 
-              onChange={(e) => setStudentName(e.target.value)} 
-              required 
-            />
-            <input 
-              type="number" 
-              placeholder="Student Age" 
-              value={studentAge} 
-              onChange={(e) => setStudentAge(e.target.value)} 
-              required 
-            />
-            <button type="submit">Add Student</button>
-          </form>
+          <input 
+            type="text" 
+            value={studentName} 
+            onChange={(e) => setStudentName(e.target.value)} 
+            placeholder="Enter student name" 
+          />
+          <button onClick={handleAddStudent}>Add Student</button>
         </section>
       </main>
 
@@ -71,22 +63,19 @@ export default function Students() {
   );
 }
 
-const ADD_STUDENT_MUTATION = gql`
-  mutation AddStudent($name: String!, $age: Int!) {
-    addStudent(input: { name: $name, age: $age }) {
-      student {
-        id
-        name
-        age
-      }
-    }
-  }
-`;
-
 Students.query = gql`
   ${Header.fragments.entry}
   query GetStudentsPage {
     ...HeaderFragment
+  }
+`;
+
+const ADD_STUDENT_MUTATION = gql`
+  mutation AddStudent($name: String!) {
+    addStudent(name: $name) {
+      id
+      name
+    }
   }
 `;
 
