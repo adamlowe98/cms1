@@ -12,7 +12,7 @@ export default function GlennMannion() {
 
   const { title: siteTitle, description: siteDescription } = data.generalSettings;
   const menuItems = data.primaryMenuItems.nodes;
-
+ 
   return (
     <>
       <Head>
