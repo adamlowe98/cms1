@@ -24,6 +24,7 @@ export default function Home(props) {
 
         <nav className={style.verticalMenu}>
           <ul>
+            <li><Link href="/GetHomePage">Home</Link></li>
             <li><Link href="/students">Students</Link></li>
             <li><Link href="/courses">Courses</Link></li>
             <li><Link href="/grades">Grades</Link></li>
