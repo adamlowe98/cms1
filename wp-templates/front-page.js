@@ -29,8 +29,7 @@ export default function Home(props) {
             <li><Link href="/courses">Courses</Link></li>
             <li><Link href="/grades">Grades</Link></li>
             <li><Link href="/attendance">Attendance</Link></li>
-                <li><Link href="/glenn-mannion">Glenn Mannion</Link></li>
-
+            <li><Link href="/glenn-mannion">Glenn Mannion</Link></li>
           </ul>
         </nav>
 
@@ -53,6 +52,11 @@ export default function Home(props) {
           <Link href="/attendance" className={style.card}>
             <h3>Manage Attendance →</h3>
             <p>Record and monitor student attendance.</p>
+          </Link>
+
+          <Link href="/glenn-mannion" className={style.card}>
+            <h3>Glenn Mannion →</h3>
+            <p>Learn more about Glenn Mannion.</p>
           </Link>
         </section>
       </main>
