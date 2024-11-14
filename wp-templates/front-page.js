@@ -8,7 +8,6 @@ import style from "../styles/front-page.module.css";
 
 export default function Home(props) {
   const menuItems = props.data.primaryMenuItems.nodes;
-}
 
   return (
     <>
@@ -16,7 +15,7 @@ export default function Home(props) {
         <title>{siteTitle}</title>
       </Head>
 
-           <Header siteTitle={siteTitle} siteDescription={siteDescription} menuItems={menuItems} />
+           <Header menuItems={menuItems} />
 
 
       <main className="container">
