@@ -22,7 +22,7 @@ export default function Courses() {
         <title>{siteTitle} - Courses</title>
       </Head>
 
-      <Header siteTitle={siteTitle} siteDescription={siteDescription} menuItems={menuItems} />
+      <Header menuItems={menuItems} />
 
     <nav className={style.verticalMenu}>
         <ul>
