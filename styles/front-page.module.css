@@ -30,37 +30,35 @@
 /* Navigation Styles */
 
 .horizontalMenu {
-        position: sticky;
-        top: 0;
-        background-color: #333;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
-    }
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+}
 
-    .horizontalMenu ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-    }
+.horizontalMenu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
 
-    .horizontalMenu li {
-        flex: 1;
-    }
+.horizontalMenu li {
+  margin: 0 15px;
+}
 
-    .horizontalMenu a {
-        display: block;
-        padding: 14px 20px;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        transition: background-color 0.3s, color 0.3s;
-    }
+.horizontalMenu a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  transition: background-color 0.3s, color 0.3s;
+}
 
-    .horizontalMenu a:hover {
-        background-color: #575757;
-        color: #f1f1f1;
-    }
+.horizontalMenu a:hover {
+  background-color: #555;
+  color: #fff;
+  border-radius: 5px;
+}
+
 
 /* Card Grid Styles */
 .cardGrid {
