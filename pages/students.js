@@ -8,7 +8,7 @@ import style from "../styles/front-page.module.css";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function Students() {
+export default function Students({ menuItems }) {
   const { data } = useQuery(GetStudentsPage);
   const [addStudent] = useMutation(ADD_STUDENT_MUTATION);
   const [formData, setFormData] = useState({
@@ -33,8 +33,6 @@ export default function Students() {
     await addStudent({ variables: { ...formData } });
     // Reset form or handle success
   };
-
-  const menuItems = data.primaryMenuItems.nodes;
 
   return (
     <>
@@ -89,7 +87,7 @@ export default function Students() {
                 </tr>
               </thead>
               <tbody>
-                {data.students.map(student => (
+                {data?.students?.map(student => (
                   <tr key={student.id}>
                     <td>{student.firstName}</td>
                     <td>{student.lastName}</td>
@@ -128,9 +126,13 @@ const GetStudentsPage = gql`
   }
 `;
 
-export function getStaticProps(ctx) {
+export async function getStaticProps(ctx) {
+  const { data } = await client.query({ query: GetStudentsPage });
   return getNextStaticProps(ctx, {
     Page: Students,
+    props: {
+      menuItems: data.primaryMenuItems.nodes,
+    },
   });
 }
 
