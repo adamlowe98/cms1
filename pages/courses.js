@@ -24,7 +24,12 @@ export default function Courses() {
 
       <Header menuItems={menuItems} />
 
-   <nav className={style.fancyMenu}>
+   
+
+      <main className="container">
+        <EntryHeader title="Course Management" />
+
+    <nav className={style.fancyMenu}>
           <ul>
             <li><Link href="/">Home</Link></li>
             <li><Link href="/students">Students</Link></li>
@@ -33,9 +38,7 @@ export default function Courses() {
             <li><Link href="/attendance">Attendance</Link></li>
           </ul>
         </nav>
-
-      <main className="container">
-        <EntryHeader title="Course Management" />
+    
         <section className={style.cardGrid}>
           <h3>Manage Courses</h3>
           <p>Here you can create, update, and delete courses.</p>
