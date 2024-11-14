@@ -57,4 +57,4 @@ export function getStaticProps(ctx) {
   return getNextStaticProps(ctx, {
     Page: Attendance,
   });
-}
+} 
