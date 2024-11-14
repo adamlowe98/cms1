@@ -26,10 +26,10 @@ export default function Attendance() {
 
       <nav className={style.verticalMenu}>
         <ul>
-          <li><Link href="pages/students">Students</Link></li>
-          <li><Link href="pages/courses">Courses</Link></li>
-          <li><Link href="pages/grades">Grades</Link></li>
-          <li><Link href="pages/attendance">Attendance</Link></li>
+          <li><Link href="/students">Students</Link></li>
+          <li><Link href="/courses">Courses</Link></li>
+          <li><Link href="/grades">Grades</Link></li>
+          <li><Link href="/attendance">Attendance</Link></li>
         </ul>
       </nav>
 
