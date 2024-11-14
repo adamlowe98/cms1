@@ -24,7 +24,11 @@ export default function Grades() {
 
       <Header menuItems={menuItems} />
 
-  <nav className={style.fancyMenu}>
+    
+      <main className="container">
+        <EntryHeader title="Grade Management" />
+
+    <nav className={style.fancyMenu}>
           <ul>
             <li><Link href="/">Home</Link></li>
             <li><Link href="/students">Students</Link></li>
@@ -35,8 +39,6 @@ export default function Grades() {
         </nav>
 
     
-      <main className="container">
-        <EntryHeader title="Grade Management" />
         <section className={style.cardGrid}>
           <h3>Manage Grades</h3>
           <p>Here you can input and modify student grades.</p>
