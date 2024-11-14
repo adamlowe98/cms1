@@ -17,20 +17,20 @@ export default function Home(props) {
         <title>{siteTitle}</title>
       </Head>
 
- <Header menuItems={menuItems} />
+      <Header menuItems={menuItems} />
 
       <main className="container">
         <EntryHeader title="Student Management System" />
 
-<nav class="horizontalMenu">
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/students">Students</a></li>
-        <li><a href="/courses">Courses</a></li>
-        <li><a href="/grades">Grades</a></li>
-        <li><a href="/attendance">Attendance</a></li>
-    </ul>
-</nav>
+        <nav className="horizontalMenu">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/students">Students</a></li>
+            <li><a href="/courses">Courses</a></li>
+            <li><a href="/grades">Grades</a></li>
+            <li><a href="/attendance">Attendance</a></li>
+          </ul>
+        </nav>
 
         <section className={style.cardGrid}>
           <Link href="/students" className={style.card}>
