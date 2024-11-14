@@ -7,6 +7,8 @@ import Footer from "../components/footer";
 import style from "../styles/front-page.module.css";
 
 export default function Home(props) {
+  const { title: siteTitle, description: siteDescription } =
+    props.data.generalSettings;
   const menuItems = props.data.primaryMenuItems.nodes;
 
   return (
