@@ -22,7 +22,7 @@ export default function Home(props) {
       <main className="container">
         <EntryHeader title="Student Management System" />
 
-        <nav className="horizontalMenu">
+        <div className="fancyMenu">
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/students">Students</a></li>
@@ -30,7 +30,7 @@ export default function Home(props) {
             <li><a href="/grades">Grades</a></li>
             <li><a href="/attendance">Attendance</a></li>
           </ul>
-        </nav>
+        </div>
 
         <section className={style.cardGrid}>
           <Link href="/students" className={style.card}>
