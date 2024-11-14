@@ -19,17 +19,13 @@ export default function Students() {
 
   return (
     <>
-      <Head>
+        <Head>
         <title>{siteTitle} - Students</title>
       </Head>
 
-      <Header
-        siteTitle={siteTitle}
-        siteDescription={siteDescription}
-        menuItems={menuItems}
-      />
+      <Header siteTitle={siteTitle} siteDescription={siteDescription} menuItems={menuItems} />
 
-           <nav className={style.verticalMenu}>
+  <nav className={style.verticalMenu}>
         <ul>
           <li><Link href="/students">Students</Link></li>
           <li><Link href="/courses">Courses</Link></li>
