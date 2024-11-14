@@ -1,17 +1,21 @@
-import { gql, useQuery, useMutation } from "your-graphql-client"; // Replace with your GraphQL client
+import { gql } from "@apollo/client";
 import Head from "next/head";
+import Link from "next/link";
 import Header from "../components/header";
 import EntryHeader from "../components/entry-header";
 import Footer from "../components/footer";
-import { getNextStaticProps } from "@faustwp/core";
 import style from "../styles/front-page.module.css";
-import Link from "next/link";
-import { useState } from "react";
 
 export default function Students({ menuItems }) {
-  const { data } = useQuery(GetStudentsPage);
-  const [addStudent] = useMutation(ADD_STUDENT_MUTATION);
-  const [formData, setFormData] = useState({
+  const data = {
+    students: [
+      // Sample data structure
+      { id: 1, firstName: "John", lastName: "Doe", email: "john@example.com", phone: "1234567890", grade: "A" },
+      { id: 2, firstName: "Jane", lastName: "Smith", email: "jane@example.com", phone: "0987654321", grade: "B" },
+    ],
+  };
+
+  const formData = {
     firstName: '',
     lastName: '',
     email: '',
@@ -21,17 +25,16 @@ export default function Students({ menuItems }) {
     grade: '',
     parentName: '',
     parentContact: '',
-  });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    formData[name] = value;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    await addStudent({ variables: { ...formData } });
-    // Reset form or handle success
+    // Add student logic here
   };
 
   return (
@@ -45,7 +48,7 @@ export default function Students({ menuItems }) {
       <main className="container">
         <EntryHeader title="Student Management" />
 
-        <nav className={style.fancyMenu}>
+        <nav className="fancyMenu">
           <ul>
             <li><Link href="/">Home</Link></li>
             <li><Link href="/students">Students</Link></li>
@@ -56,11 +59,11 @@ export default function Students({ menuItems }) {
           </ul>
         </nav>
 
-        <div className={style.container}>
-          <section className={style.formSection}>
+        <div className="container">
+          <section className="formSection">
             <h3>Manage Students</h3>
             <p>Here you can add, edit, and delete student records.</p>
-            <form onSubmit={handleSubmit} className={style.studentForm}>
+            <form onSubmit={handleSubmit} className="studentForm">
               <input type="text" name="firstName" placeholder="First Name" onChange={handleChange} required />
               <input type="text" name="lastName" placeholder="Last Name" onChange={handleChange} required />
               <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
@@ -74,9 +77,9 @@ export default function Students({ menuItems }) {
             </form>
           </section>
 
-          <section className={style.tableSection}>
+          <section className="tableSection">
             <h3>Student List</h3>
-            <table className={style.studentTable}>
+            <table className="studentTable">
               <thead>
                 <tr>
                   <th>First Name</th>
@@ -87,7 +90,7 @@ export default function Students({ menuItems }) {
                 </tr>
               </thead>
               <tbody>
-                {data?.students?.map(student => (
+                {data.students.map(student => (
                   <tr key={student.id}>
                     <td>{student.firstName}</td>
                     <td>{student.lastName}</td>
@@ -107,43 +110,17 @@ export default function Students({ menuItems }) {
   );
 }
 
-const GetStudentsPage = gql`
-  query GetStudentsPage {
-    students {
-      id
-      firstName
-      lastName
-      email
-      phone
-      grade
-    }
-    primaryMenuItems {
-      nodes {
-        title
-        url
-      }
-    }
-  }
-`;
-
-export async function getStaticProps(ctx) {
-  const { data } = await yourGraphQLClient.query({ query: GetStudentsPage }); // Replace with your GraphQL client
-  return getNextStaticProps(ctx, {
-    Page: Students,
+export function getStaticProps(ctx) {
+  return {
     props: {
-      menuItems: data.primaryMenuItems.nodes,
+      menuItems: [
+        { title: "Home", url: "/" },
+        { title: "Students", url: "/students" },
+        { title: "Courses", url: "/courses" },
+        { title: "Grades", url: "/grades" },
+        { title: "Attendance", url: "/attendance" },
+        { title: "Glenn Mannion", url: "/glenn-mannion" },
+      ],
     },
-  });
+  };
 }
-
-const ADD_STUDENT_MUTATION = gql`
-  mutation AddStudent($firstName: String!, $lastName: String!, $email: String!, $phone: String, $address: String, $dateOfBirth: String!, $grade: String!, $parentName: String, $parentContact: String) {
-    addStudent(input: { firstName: $firstName, lastName: $lastName, email: $email, phone: $phone, address: $address, dateOfBirth: $dateOfBirth, grade: $grade, parentName: $parentName, parentContact: $parentContact }) {
-      student {
-        id
-        firstName
-        lastName
-      }
-    }
-  }
-`;
