@@ -28,44 +28,38 @@
 
 /* Navigation Styles */
 
- .verticalMenu {
-    float: left;
-    width: 200px; /* Adjust width as needed */
-  }
-  
-  .verticalMenu ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .verticalMenu li {
-    margin: 10px 0;
-  }
+.horizontalMenu {
+        position: sticky;
+        top: 0;
+        background-color: #333;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+    }
 
-.verticalMenu {
-    background: #005f99;
-    padding: 15px;
-    border-radius: 5px;
-}
+    .horizontalMenu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+    }
 
-.verticalMenu ul {
-    list-style-type: none;
-    padding: 0;
-}
+    .horizontalMenu li {
+        flex: 1;
+    }
 
-.verticalMenu li {
-    margin: 10px 0;
-}
+    .horizontalMenu a {
+        display: block;
+        padding: 14px 20px;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
 
-.verticalMenu a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.verticalMenu a:hover {
-    text-decoration: underline;
-}
+    .horizontalMenu a:hover {
+        background-color: #575757;
+        color: #f1f1f1;
+    }
 
 /* Card Grid Styles */
 .cardGrid {
