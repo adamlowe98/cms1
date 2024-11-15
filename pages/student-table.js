@@ -4,6 +4,23 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import style from "../styles/front-page.module.css";
 
+const GET_STUDENTS_QUERY = gql`
+  query GetStudents {
+    students {
+      id
+      firstName
+      lastName
+      email
+      phone
+      address
+      dateOfBirth
+      grade
+      parentName
+      parentContact
+    }
+  }
+`;
+
 export default function StudentTable() {
   const { data, loading, error } = useQuery(GET_STUDENTS_QUERY);
 
@@ -35,7 +52,7 @@ export default function StudentTable() {
             </tr>
           </thead>
           <tbody>
-            {data.getStudents.map(student => (
+            {data.students.map(student => (
               <tr key={student.id}>
                 <td>{student.firstName}</td>
                 <td>{student.lastName}</td>
@@ -56,20 +73,3 @@ export default function StudentTable() {
     </>
   );
 }
-
-const GET_STUDENTS_QUERY = gql`
-  query GetStudents {
-    getStudents {
-      id
-      firstName
-      lastName
-      email
-      phone
-      address
-      dateOfBirth
-      grade
-      parentName
-      parentContact
-    }
-  }
-`;
