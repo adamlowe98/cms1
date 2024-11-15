@@ -2,7 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import Head from "next/head";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import style from "../styles/student-table.module.css";
+import style from "../styles/front-page.module.css";
 
 export default function StudentTable() {
   const { data, loading, error } = useQuery(GET_STUDENTS_QUERY);
