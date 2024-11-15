@@ -1,8 +1,11 @@
 import { gql, useQuery } from "@apollo/client";
 import Head from "next/head";
 import Header from "../components/header";
+import EntryHeader from "../components/entry-header";
 import Footer from "../components/footer";
-import style from "../styles/student-table.module.css";
+import { getNextStaticProps } from "@faustwp/core";
+import style from "../styles/front-page.module.css";
+import Link from "next/link";
 
 export default function StudentTable() {
   const { data, loading, error } = useQuery(GET_STUDENTS_QUERY);
