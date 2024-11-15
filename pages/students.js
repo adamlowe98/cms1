@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { gql } from "@apollo/client";
 import Head from "next/head";
 import Link from "next/link";
@@ -7,15 +8,12 @@ import Footer from "../components/footer";
 import style from "../styles/front-page.module.css";
 
 export default function Students({ menuItems }) {
-  const data = {
-    students: [
-      // Sample data structure
-      { id: 1, firstName: "John", lastName: "Doe", email: "john@example.com", phone: "1234567890", grade: "A" },
-      { id: 2, firstName: "Jane", lastName: "Smith", email: "jane@example.com", phone: "0987654321", grade: "B" },
-    ],
-  };
+  const [students, setStudents] = useState([
+    { id: 1, firstName: "John", lastName: "Doe", email: "john@example.com", phone: "1234567890", grade: "A" },
+    { id: 2, firstName: "Jane", lastName: "Smith", email: "jane@example.com", phone: "0987654321", grade: "B" },
+  ]);
 
-  const formData = {
+  const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
@@ -25,16 +23,27 @@ export default function Students({ menuItems }) {
     grade: '',
     parentName: '',
     parentContact: '',
-  };
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    formData[name] = value;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add student logic here
+    setStudents([...students, { id: students.length + 1, ...formData }]);
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      address: '',
+      dateOfBirth: '',
+      grade: '',
+      parentName: '',
+      parentContact: '',
+    });
   };
 
   return (
@@ -64,15 +73,15 @@ export default function Students({ menuItems }) {
             <h3>Manage Students</h3>
             <p>Here you can add, edit, and delete student records.</p>
             <form onSubmit={handleSubmit} className="studentForm">
-              <input type="text" name="firstName" placeholder="First Name" onChange={handleChange} required />
-              <input type="text" name="lastName" placeholder="Last Name" onChange={handleChange} required />
-              <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-              <input type="tel" name="phone" placeholder="Phone" onChange={handleChange} />
-              <input type="text" name="address" placeholder="Address" onChange={handleChange} />
-              <input type="date" name="dateOfBirth" onChange={handleChange} required />
-              <input type="text" name="grade" placeholder="Grade" onChange={handleChange} required />
-              <input type="text" name="parentName" placeholder="Parent's Name" onChange={handleChange} />
-              <input type="tel" name="parentContact" placeholder="Parent's Contact" onChange={handleChange} />
+              <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} required />
+              <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} required />
+              <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+              <input type="tel" name="phone" placeholder="Phone" value={formData.phone} onChange={handleChange} />
+              <input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleChange} />
+              <input type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} required />
+              <input type="text" name="grade" placeholder="Grade" value={formData.grade} onChange={handleChange} required />
+              <input type="text" name="parentName" placeholder="Parent's Name" value={formData.parentName} onChange={handleChange} />
+              <input type="tel" name="parentContact" placeholder="Parent's Contact" value={formData.parentContact} onChange={handleChange} />
               <button type="submit">Add Student</button>
             </form>
           </section>
@@ -90,7 +99,7 @@ export default function Students({ menuItems }) {
                 </tr>
               </thead>
               <tbody>
-                {data.students.map(student => (
+                {students.map(student => (
                   <tr key={student.id}>
                     <td>{student.firstName}</td>
                     <td>{student.lastName}</td>
