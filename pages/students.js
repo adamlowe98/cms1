@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { gql } from "@apollo/client";
 import Head from "next/head";
 import Link from "next/link";
 import Header from "../components/header";
@@ -8,11 +7,7 @@ import Footer from "../components/footer";
 import style from "../styles/front-page.module.css";
 
 export default function Students({ menuItems }) {
-  const [students, setStudents] = useState([
-    { id: 1, firstName: "John", lastName: "Doe", email: "john@example.com", phone: "1234567890", grade: "A" },
-    { id: 2, firstName: "Jane", lastName: "Smith", email: "jane@example.com", phone: "0987654321", grade: "B" },
-  ]);
-
+  const [students, setStudents] = useState([]);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
