@@ -8,11 +8,14 @@ import style from "../styles/front-page.module.css";
 import Link from "next/link";
 
 export default function MusicPlayer() {
-  const { data } = useQuery(MusicPlayer.query);
+  const { data, loading, error } = useQuery(MusicPlayer.query);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   const { title: siteTitle, description: siteDescription } = data.generalSettings;
   const menuItems = data.primaryMenuItems.nodes;
-  const mp3Files = data.mp3Files; // Assuming mp3Files is part of the query response
+  const mp3Files = data.mp3Files || []; // Ensure mp3Files is defined
 
   return (
     <>
