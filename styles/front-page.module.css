@@ -174,4 +174,19 @@
   text-align: left;
 }
 
+.musicContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 
+.musicItem {
+  margin: 20px;
+  text-align: center;
+}
+
+.thumbnail {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
