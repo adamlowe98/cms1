@@ -7,6 +7,27 @@ const musicFiles = [
   // Add more songs as needed
 ];
 
+<Head>
+        <title>{siteTitle} - Students</title>
+      </Head>
+
+      <Header menuItems={menuItems} />
+
+      
+      <main className="container">
+        <EntryHeader title="RatPack Music" />
+
+    <nav className={style.fancyMenu}>
+          <ul>
+            <li><Link href="/">Home</Link></li>
+            <li><Link href="/students">Students</Link></li>
+            <li><Link href="/courses">Courses</Link></li>
+            <li><Link href="/grades">Grades</Link></li>
+            <li><Link href="/attendance">Attendance</Link></li>
+    <li><Link href="/glenn-mannion">Glenn Mannion</Link></li>
+          </ul>
+        </nav>
+
 const MusicPlayer = () => {
   return (
     <div className={style.musicContainer}>
