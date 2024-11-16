@@ -7,37 +7,72 @@ import { getNextStaticProps } from "@faustwp/core";
 import style from "../styles/front-page.module.css";
 import Link from "next/link";
 
-const MusicPlayer = () => {
+export default function MusicPlayer() {
+  const { data } = useQuery(MusicPlayer.query);
+
   const { title: siteTitle, description: siteDescription } = data.generalSettings;
   const menuItems = data.primaryMenuItems.nodes;
-
-  const musicFiles = [
-    { name: 'Song 1', src: 'path/to/song1.mp3', thumbnail: 'path/to/thumbnail1.jpg' },
-    { name: 'Song 2', src: 'path/to/song2.mp3', thumbnail: 'path/to/thumbnail2.jpg' },
-    // Add more songs as needed
-  ];
+  const mp3Files = data.mp3Files; // Assuming mp3Files is part of the query response
 
   return (
     <>
       <Head>
-        <title>{siteTitle} - Students</title>
+        <title>{siteTitle} - Music Player</title>
       </Head>
+
       <Header menuItems={menuItems} />
-      <main className={style.musicContainer}>
-        {musicFiles.map((file, index) => (
-          <div key={index} className={style.musicItem}>
-            <img src={file.thumbnail} alt={file.name} className={style.thumbnail} />
-            <h4>{file.name}</h4>
-            <audio controls>
-              <source src={file.src} type="audio/mp3" />
-              Your browser does not support the audio element.
-            </audio>
-          </div>
-        ))}
+    
+      <main className="container">
+        <EntryHeader title="Music Player" />
+
+        <nav className={style.fancyMenu}>
+          <ul>
+            <li><Link href="/">Home</Link></li>
+            <li><Link href="/students">Students</Link></li>
+            <li><Link href="/courses">Courses</Link></li>
+            <li><Link href="/grades">Grades</Link></li>
+            <li><Link href="/attendance">Attendance</Link></li>
+            <li><Link href="/music-player">Music Player</Link></li>
+          </ul>
+        </nav>
+    
+        <section className={style.cardGrid}>
+          {mp3Files.map((file) => (
+            <div key={file.id} className={style.card}>
+              <img src={file.thumbnail} alt={`${file.title} thumbnail`} />
+              <h4>{file.title}</h4>
+              <p>{file.artist}</p>
+              <audio controls>
+                <source src={file.url} type="audio/mpeg" />
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+          ))}
+        </section>
+
       </main>
+
       <Footer />
     </>
   );
-};
+}
 
-export default MusicPlayer;
+MusicPlayer.query = gql`
+  ${Header.fragments.entry}
+  query GetMusicPlayerPage {
+    ...HeaderFragment
+    mp3Files {
+      id
+      title
+      artist
+      url
+      thumbnail
+    }
+  }
+`;
+
+export function getStaticProps(ctx) {
+  return getNextStaticProps(ctx, {
+    Page: MusicPlayer,
+  });
+}
