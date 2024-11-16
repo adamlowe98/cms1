@@ -1,3 +1,5 @@
+# Music Player
+
 import { gql, useQuery } from "@apollo/client";
 import Head from "next/head";
 import Header from "../components/header";
@@ -61,9 +63,18 @@ export default function MusicPlayer() {
 }
 
 MusicPlayer.query = gql`
-  ${Header.fragments.entry}
   query GetMusicPlayerPage {
-    ...HeaderFragment
+    generalSettings {
+      title
+      description
+    }
+    primaryMenuItems {
+      nodes {
+        id
+        title
+        url
+      }
+    }
     mp3Files {
       id
       title
