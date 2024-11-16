@@ -1,12 +1,39 @@
-import React from 'react';
-import Head from 'next/head';
-import Header from '../components/Header';
-import style from '../styles/front-page.module.css';
+import { gql, useQuery } from "@apollo/client";
+import Head from "next/head";
+import Header from "../components/header";
+import EntryHeader from "../components/entry-header";
+import Footer from "../components/footer";
+import { getNextStaticProps } from "@faustwp/core";
+import style from "../styles/front-page.module.css";
+import Link from "next/link";
 
-const siteTitle = 'RatPack Music';
-const menuItems = ['Home', 'About', 'Music', 'Contact'];
 
-const musicFiles = [
+  const { title: siteTitle, description: siteDescription } = data.generalSettings;
+  const menuItems = data.primaryMenuItems.nodes;
+ 
+  return (
+    <>
+      <Head>
+        <title>{siteTitle} - RatPack Music</title>
+      </Head>
+
+      <Header menuItems={menuItems} />
+    
+      <main className="container">
+        <EntryHeader title="The RatPack Music" />
+
+        <nav className={style.fancyMenu}>
+          <ul>
+            <li><Link href="/">Home</Link></li>
+            <li><Link href="/students">Students</Link></li>
+            <li><Link href="/courses">Courses</Link></li>
+            <li><Link href="/grades">Grades</Link></li>
+            <li><Link href="/attendance">Attendance</Link></li>
+            <li><Link href="/glenn-mannion">Glenn Mannion</Link></li>
+          </ul>
+        </nav>
+    
+       const musicFiles = [
   { name: 'Song 1', src: 'path/to/song1.mp3', thumbnail: 'path/to/thumbnail1.jpg' },
   { name: 'Song 2', src: 'path/to/song2.mp3', thumbnail: 'path/to/thumbnail2.jpg' },
   // Add more songs as needed
@@ -36,3 +63,9 @@ const MusicPlayer = () => {
 };
 
 export default MusicPlayer;
+      </main>
+
+      <Footer />
+    </>
+  );
+}
